@@ -15,7 +15,7 @@ import { Poem, Lang } from '../doms';
 })
 export class PoemsComponent implements OnInit {
 
-  private verses : string[];
+  private verses : String[];
   private langs : Lang[] = [{id: "en", desc: "English"}, {id: "de", desc: "Deutch"}];
 
   constructor(private poemsService : PoemsService) { }
