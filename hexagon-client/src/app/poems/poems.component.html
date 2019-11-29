@@ -1,0 +1,20 @@
+
+
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+        <mat-card-header>
+            <button mat-stroked-button color="primary" (click)="getPoems('en')"> English !! </button>
+            <button mat-stroked-button color="primary" (click)="getPoems('de')"> Deutsch !! </button>
+        </mat-card-header>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <mat-card class="example-card">
+            <mat-card-content>
+                <p *ngFor="let verse of verses">
+                    <span class="badge">{{verse}}</span>
+                </p>
+            </mat-card-content>                    
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+      
