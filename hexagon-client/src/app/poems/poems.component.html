@@ -1,10 +1,29 @@
 
 
-<mat-grid-list cols="2" rowHeight="1:1">
+<mat-grid-list cols="2" rowHeight="2:2">
     <mat-grid-tile>
+        <mat-card-header>           
+            <mat-list>
+                <mat-list-item>Hexagonal Arch</mat-list-item>
+                <button mat-stroked-button color="primary" (click)="getPoems('en')"> English !! </button>
+                <mat-divider></mat-divider>
+                <button mat-stroked-button color="primary" (click)="getPoems('de')"> Deutsch !! </button>
+                <mat-divider></mat-divider>
+            </mat-list> 
+        </mat-card-header>
         <mat-card-header>
-            <button mat-stroked-button color="primary" (click)="getPoems('en')"> English !! </button>
-            <button mat-stroked-button color="primary" (click)="getPoems('de')"> Deutsch !! </button>
+            <mat-list>
+                <mat-list-item>Security (Scopes)</mat-list-item>
+                <button mat-stroked-button color="secondary" (click)="mainSubject()"> Main </button>
+                <mat-divider></mat-divider>
+                <button mat-stroked-button color="secondary" (click)="subsidiary()"> Subsidiary </button>
+                <mat-divider></mat-divider>                        
+                <button mat-stroked-button color="secondary" (click)="identity()"> Identity </button> 
+                <mat-divider></mat-divider> 
+                <mat-list-item>Security (Roles)</mat-list-item>
+                <button mat-stroked-button color="secondary" (click)="admin()"> Admin </button>
+                <mat-divider></mat-divider>
+            </mat-list>    
         </mat-card-header>
     </mat-grid-tile>
     <mat-grid-tile>

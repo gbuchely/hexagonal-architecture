@@ -1,0 +1,35 @@
+<mat-list>
+    <mat-list-item>CLIENT ID</mat-list-item>
+    <mat-chip>authUrl</mat-chip> {{parameterService.authUrl}}
+    <mat-divider></mat-divider>
+    <mat-chip>client_id</mat-chip> {{parameterService.client_id}}
+    <mat-divider></mat-divider>
+    <mat-chip>redirect_uri</mat-chip> {{parameterService.redirect_uri}}
+    <mat-divider></mat-divider>
+    <mat-chip>scope</mat-chip> {{parameterService.scope}}
+    <mat-divider></mat-divider> 
+</mat-list>
+
+<mat-list>
+    <mat-list-item>AUTHORIZATION CODE</mat-list-item>
+    <mat-chip color="primary" selected>access_code</mat-chip> {{parameterService.access_code}}
+    <mat-divider></mat-divider>
+    <mat-chip color="primary" selected>grant_type</mat-chip> {{parameterService.grant_type}}
+    <mat-divider></mat-divider>
+    <mat-chip color="primary" selected>client_secret</mat-chip> {{parameterService.client_secret}}
+    <mat-divider></mat-divider>
+</mat-list>
+
+<mat-list>
+    <mat-list-item>ACCESS TOKEN</mat-list-item>
+    <mat-chip color="accent" selected>access_token</mat-chip> {{parameterService.access_token}}
+    <mat-divider></mat-divider>
+    <mat-chip color="accent" selected>expires_in</mat-chip> {{parameterService.expires_in}}
+    <mat-divider></mat-divider>
+    <mat-chip color="accent" selected>id_token</mat-chip> {{parameterService.id_token}}
+    <mat-divider></mat-divider>
+    <mat-chip color="accent" selected>refresh_token</mat-chip> {{parameterService.refresh_token}}
+    <mat-divider></mat-divider>
+    <mat-chip color="accent" selected>token_type</mat-chip> {{parameterService.token_type}}
+    <mat-divider></mat-divider>
+</mat-list>

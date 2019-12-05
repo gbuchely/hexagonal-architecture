@@ -9,3 +9,8 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
+  security:
+    oauth2:
+      resourceserver:
+        jwk:
+          jwk-set-uri: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_DdEk2qzAF/.well-known/jwks.json

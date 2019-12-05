@@ -27,7 +27,27 @@ export class PoemsComponent implements OnInit {
   getPoems(lang : String): void {
     console.log('Lang >> ' + lang)
     this.poemsService.getPoems(lang)
-      .subscribe(poemsRet => this.verses = poemsRet);  
+      .subscribe(poemsRet => this.verses = poemsRet.body);  
+  }
+
+  mainSubject() : void {
+    this.poemsService.getMainSubject()
+    .subscribe(subject => this.verses = subject.body); 
+  }
+
+  subsidiary() : void {
+    this.poemsService.getSubsidiary()
+    .subscribe(subject => this.verses = subject.body); 
+  }
+
+  admin() : void {
+    this.poemsService.getAdmin()
+    .subscribe(subject => this.verses = subject.body); 
+  }
+
+  identity() : void {
+    this.poemsService.getIdentity()
+    .subscribe(subject => this.verses = subject.body); 
   }
 
 }

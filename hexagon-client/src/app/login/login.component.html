@@ -1,5 +1,20 @@
-<mat-card>
-    <form>
+<mat-grid-list cols="2" rowHeight="1:1">
+    <mat-grid-tile>
+        <mat-card-header>
+            <mat-list>
+                <mat-divider></mat-divider> 
+                <button mat-stroked-button color="primary" (click)="getAuth()"> Authorization Code </button>
+                <mat-divider></mat-divider>
+                <button mat-stroked-button color="primary" (click)="getToken()"> Access Token </button>
+                <mat-divider></mat-divider>
+                <button mat-stroked-button color="primary" (click)="logout()"> LogOut </button>
+                <mat-divider></mat-divider>
+                <button mat-stroked-button color="primary" routerLink="/poems"> Go Home </button>
+                <mat-divider></mat-divider>
+            </mat-list>            
+        </mat-card-header>
+    </mat-grid-tile>
+    <mat-grid-tile>
+    </mat-grid-tile>
+</mat-grid-list>
 
-    </form>     
-</mat-card>
