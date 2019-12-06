@@ -18,13 +18,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
 @RestController
 @RequestMapping("/api")
 class ApiPoemController {
+
+	final String subsidiaryUri = "http://localhost:8081/api/";
+
 	private ApiRestDriver apiRestDriver;
 
 	@Autowired
@@ -41,37 +43,34 @@ class ApiPoemController {
 
 	@GetMapping("/")
 	public List index(@AuthenticationPrincipal Jwt jwt) {
-		System.out.println("headers:\n" + jwt.getHeaders());
-		System.out.println("\nclaims:\n" + jwt.getClaims());
+		printClaims(jwt);
 		List<String> out = new ArrayList();
 		out.add(String.format("Hello, %s!", jwt.getSubject()));
 		return out;
 	}
 
-	@GetMapping("/pri")
-	public List primary() {
-		List<String> out = new ArrayList();
-		out.add("Primary");
-		return out;
-	}
-
-	@GetMapping("/sub")
+	@GetMapping("/subsidiary")
 	public List subsidiary(@AuthenticationPrincipal Jwt jwt) {
-		final String uri = "http://localhost:8081/api/pri";
+		printClaims(jwt);
 
 		RestTemplate restTemplate = new RestTemplate();
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 		headers.setBearerAuth(jwt.getTokenValue());
-		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
+		HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
-		ResponseEntity<String> result = restTemplate.exchange(uri, HttpMethod.GET, entity, String.class);
+		ResponseEntity<String> result = restTemplate.exchange(subsidiaryUri, HttpMethod.GET, entity, String.class);
 
 		System.out.println(result.getBody());
 
 		List<String> out = new ArrayList();
 		out.add("Get " + result.getBody() + " from Subsidiary");
 		return out;
+	}
+
+	private void printClaims(Jwt jwt) {
+		System.out.println("headers:\n" + jwt.getHeaders());
+		System.out.println("\nclaims:\n" + jwt.getClaims());
 	}
 }

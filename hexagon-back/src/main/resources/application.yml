@@ -1,3 +1,6 @@
+subUrl: http://localhost:8081
+sec: auth
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres

@@ -30,11 +30,17 @@ class AdminController {
 	public AdminController(ApiRestDriver apiRestDriver) {
 		this.apiRestDriver = apiRestDriver;
 	}
-		
+
 	@GetMapping("/")
-	public List admin() {
+	public List index(@AuthenticationPrincipal Jwt jwt) {
+		printClaims(jwt);
 		List<String> out = new ArrayList();
-		out.add("Administrator");
+		out.add(String.format("Hello ADMIN, %s!", jwt.getSubject()));
 		return out;
+	}
+
+	private void printClaims(Jwt jwt) {
+		System.out.println("headers:\n" + jwt.getHeaders());
+		System.out.println("\nclaims:\n" + jwt.getClaims());
 	}
 }

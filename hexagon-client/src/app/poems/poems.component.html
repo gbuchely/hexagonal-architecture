@@ -5,23 +5,36 @@
         <mat-card-header>           
             <mat-list>
                 <mat-list-item>Hexagonal Arch</mat-list-item>
-                <button mat-stroked-button color="primary" (click)="getPoems('en')"> English !! </button>
+                <button mat-stroked-button color="primary" (click)="getPoems('en')"> Poems English !! </button>
                 <mat-divider></mat-divider>
-                <button mat-stroked-button color="primary" (click)="getPoems('de')"> Deutsch !! </button>
+                <button mat-stroked-button color="primary" (click)="getPoems('de')"> Poems Deutsch !! </button>
                 <mat-divider></mat-divider>
             </mat-list> 
         </mat-card-header>
         <mat-card-header>
             <mat-list>
-                <mat-list-item>Security (Scopes)</mat-list-item>
-                <button mat-stroked-button color="secondary" (click)="mainSubject()"> Main </button>
-                <mat-divider></mat-divider>
-                <button mat-stroked-button color="secondary" (click)="subsidiary()"> Subsidiary </button>
-                <mat-divider></mat-divider>                        
-                <button mat-stroked-button color="secondary" (click)="identity()"> Identity </button> 
+                <button mat-stroked-button color="secondary" (click)="clear()"> CLEAR </button> 
                 <mat-divider></mat-divider> 
-                <mat-list-item>Security (Roles)</mat-list-item>
-                <button mat-stroked-button color="secondary" (click)="admin()"> Admin </button>
+                <mat-divider></mat-divider>
+                <mat-list-item>Security [ Authority / api ]</mat-list-item>
+                <button mat-stroked-button color="secondary" (click)="identity()"> Get Identity of MAIN </button> 
+                <mat-divider></mat-divider> 
+                <button mat-stroked-button color="secondary" (click)="subsidiary()"> Get Identity of SUBSIDIARY  through MAIN </button>
+                <mat-divider></mat-divider>                        
+                <button mat-stroked-button color="secondary" (click)="identitySubsidiary()"> Get Identity of SUBSIDIARY</button> 
+                <mat-divider></mat-divider>
+                <button mat-stroked-button color="secondary" (click)="identityId()"> Get Identity of Main using ID TOKEN</button> 
+                <mat-divider></mat-divider>
+                <mat-list-item>Security [ Authority / admin ]</mat-list-item>
+                <button mat-stroked-button color="secondary" (click)="admin()"> Get ADMIN Identity </button> 
+                <mat-divider></mat-divider> 
+                <button mat-stroked-button color="secondary" (click)="adminId()"> Get ADMIN Identity using ID TOKEN </button> 
+                <mat-divider></mat-divider>   
+                <mat-list-item>Security (Roles / api)</mat-list-item>
+                <button mat-stroked-button color="secondary" (click)="identitySubsidiaryId()"> Get Identity of SUBSIDIARY using ID TOKEN </button>
+                <mat-divider></mat-divider>   
+                <mat-list-item>Security (Roles / admin)</mat-list-item>
+                <button mat-stroked-button color="secondary" (click)="adminSubsidiaryId()"> Get ADMIN Identity of SUBSIDIARY using ID TOKEN </button>
                 <mat-divider></mat-divider>
             </mat-list>    
         </mat-card-header>

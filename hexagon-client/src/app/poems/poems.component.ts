@@ -24,14 +24,23 @@ export class PoemsComponent implements OnInit {
     
   }
 
+  clear(): void {
+    this.verses =  [];
+  }
+
   getPoems(lang : String): void {
     console.log('Lang >> ' + lang)
     this.poemsService.getPoems(lang)
       .subscribe(poemsRet => this.verses = poemsRet.body);  
   }
 
-  mainSubject() : void {
-    this.poemsService.getMainSubject()
+  identity() : void {
+    this.poemsService.getIdentity()
+    .subscribe(subject => this.verses = subject.body); 
+  }
+
+  identityId() : void {
+    this.poemsService.getIdentityId()
     .subscribe(subject => this.verses = subject.body); 
   }
 
@@ -40,13 +49,28 @@ export class PoemsComponent implements OnInit {
     .subscribe(subject => this.verses = subject.body); 
   }
 
+  identitySubsidiary() : void {
+    this.poemsService.getIdentitySubsidiary()
+    .subscribe(subject => this.verses = subject.body); 
+  }
+
+  identitySubsidiaryId() : void {
+    this.poemsService.getIdentitySubsidiaryId()
+    .subscribe(subject => this.verses = subject.body); 
+  }
+
   admin() : void {
     this.poemsService.getAdmin()
     .subscribe(subject => this.verses = subject.body); 
   }
 
-  identity() : void {
-    this.poemsService.getIdentity()
+  adminId() : void {
+    this.poemsService.getAdminId()
+    .subscribe(subject => this.verses = subject.body); 
+  }
+
+  adminSubsidiaryId() : void {
+    this.poemsService.getAdminSubsidiaryId()
     .subscribe(subject => this.verses = subject.body); 
   }
 

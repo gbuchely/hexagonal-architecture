@@ -16,7 +16,9 @@ export class PoemsService {
   ) { }
 
   private hexagonalUrl = 'http://localhost:8080/api/';  // URL to web api
+  private hexagonaSubsidiarylUrl = 'http://localhost:8081/api/';
   private adminUrl = 'http://localhost:8080/admin/';
+  private adminSubsidiarylUrl = 'http://localhost:8081/admin/';
 
   getPoems(lang : String): Observable<any> {
     //return of (POEMS)
@@ -30,13 +32,22 @@ export class PoemsService {
     return this.http.get<String[]>(this.hexagonalUrl + 'askForPoem?lang=' + lang, { headers, observe: 'response' });
   }
 
-  getMainSubject(): Observable<any> {
+  getIdentity(): Observable<any> {
     const headers = new HttpHeaders(
       { 
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ' + this.parameterService.access_token
       });
-    return this.http.get<String[]>(this.hexagonalUrl + 'pri', { headers, observe: 'response' });
+    return this.http.get<String[]>(this.hexagonalUrl, { headers, observe: 'response' });
+  }
+
+  getIdentityId(): Observable<any> {
+    const headers = new HttpHeaders(
+      { 
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + this.parameterService.id_token
+      });
+    return this.http.get<String[]>(this.hexagonalUrl, { headers, observe: 'response' });
   }
 
   getSubsidiary(): Observable<any> {
@@ -45,7 +56,25 @@ export class PoemsService {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Authorization': 'Bearer ' + this.parameterService.access_token
       });
-    return this.http.get<String[]>(this.hexagonalUrl + 'sub', { headers, observe: 'response' });
+    return this.http.get<String[]>(this.hexagonalUrl + 'subsidiary', { headers, observe: 'response' });
+  }
+
+  getIdentitySubsidiary(): Observable<any> {
+    const headers = new HttpHeaders(
+      { 
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + this.parameterService.access_token
+      });
+    return this.http.get<String[]>(this.hexagonaSubsidiarylUrl, { headers, observe: 'response' });
+  }
+
+  getIdentitySubsidiaryId(): Observable<any> {
+    const headers = new HttpHeaders(
+      { 
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + this.parameterService.id_token
+      });
+    return this.http.get<String[]>(this.hexagonaSubsidiarylUrl, { headers, observe: 'response' });
   }
 
   getAdmin(): Observable<any> {
@@ -57,13 +86,22 @@ export class PoemsService {
     return this.http.get<String[]>(this.adminUrl, { headers, observe: 'response' });
   }
 
-  getIdentity(): Observable<any> {
+  getAdminId(): Observable<any> {
     const headers = new HttpHeaders(
       { 
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Authorization': 'Bearer ' + this.parameterService.access_token
+        'Authorization': 'Bearer ' + this.parameterService.id_token
       });
-    return this.http.get<String[]>(this.hexagonalUrl, { headers, observe: 'response' });
+    return this.http.get<String[]>(this.adminUrl, { headers, observe: 'response' });
+  }
+
+  getAdminSubsidiaryId(): Observable<any> {
+    const headers = new HttpHeaders(
+      { 
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ' + this.parameterService.id_token
+      });
+    return this.http.get<String[]>(this.adminSubsidiarylUrl, { headers, observe: 'response' });
   }
 
 }

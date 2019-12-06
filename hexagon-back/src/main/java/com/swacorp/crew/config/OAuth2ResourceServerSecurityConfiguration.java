@@ -2,35 +2,40 @@ package com.swacorp.crew.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 
 @EnableWebSecurity
 public class OAuth2ResourceServerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    //@Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}") String jwkSetUri;
+    //@Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
+    //private String jwkSetUri;
     private String jwkSetUri = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_DdEk2qzAF/.well-known/jwks.json";
+
+    @Value("${subUrl}")
+    private String subUrl;
+
+    @Value("${sec}")
+    private String sec;
+
+    private Authorizer authorizer = new Authorizer();
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // @formatter:off
-        http.cors();
-        http
-                .authorizeRequests(authorizeRequests ->
-                        authorizeRequests
-                                .antMatchers(HttpMethod.GET, "/api/**").hasAuthority("SCOPE_openid")
-                                .antMatchers(HttpMethod.GET, "/admin/**").hasRole("ADMIN")
 
-                                //.antMatchers(HttpMethod.POST, "/message/**").hasAuthority("SCOPE_message:write")
-                                .anyRequest().authenticated()
-                )
-                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
-        // @formatter:on
+        System.out.println("sec : " + sec);
+        System.out.println("subUrl : " + subUrl);
+        System.out.println("jwkSetUri : " + jwkSetUri);
+
+        http.cors();
+        if (sec.equals("role")) {
+            authorizer.authorizeByRole(http);
+        } else {
+            authorizer.authorizeByAuthority(http);
+        }
     }
 
     @Bean
