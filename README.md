@@ -9,13 +9,13 @@ A simple project to show hexagonal architecture concept and use of Spring to sec
 
 ## Implementation
 
-0. Create a Auth Server with AWS Cognito (See documentation in confluence)
+NOTE: Create a Auth Server with AWS Cognito (See documentation in confluence)
 
 1. Build the model for the hexagon with this instructions:
-- ./poem-usecase/README.md
+***./poem-usecase/README.md***
 
 2. Build the Application for the hexagon with this instructions:
-- ./hexagon-back/README.md
+ ***./hexagon-back/README.md***
 
-3. Build the Client for the hexagon with this instructions:
-- ./hexagon-client/README.md
+4. Build the Client for the hexagon with this instructions:
+***./hexagon-client/README.md***
