@@ -3,7 +3,7 @@ package com.swacorp.crew.adapter.driven;
 import java.util.Map;
 import java.util.Objects;
 
-import com.swacorp.crew.poem.boundary.driven_port.IWriteLines;
+import com.swacorp.crew.poem.boundary.port.driven.IWriteLines;
 import org.springframework.ui.Model;
 
 public class SpringMvcPublisher implements IWriteLines {

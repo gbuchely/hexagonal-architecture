@@ -1,8 +1,8 @@
 package com.swacorp.crew.adapter.driven;
 
+import com.swacorp.crew.poem.boundary.port.driven.IObtainPoems;
 import com.swacorp.crew.repository.Poem;
 import com.swacorp.crew.repository.PoemRepository;
-import com.swacorp.crew.poem.boundary.driven_port.IObtainPoems;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

@@ -12,13 +12,14 @@ public class Authorizer {
 
     public static void authorizeByAuthority(HttpSecurity http) throws Exception {
         System.out.println("*** authorizeByAuthority ***");
+
         http
-                .authorizeRequests(authorizeRequests ->
-                        authorizeRequests
-                                .antMatchers(HttpMethod.GET, "/api/**").hasAuthority("SCOPE_openid")
-                                .anyRequest().authenticated()
-                )
-                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
+            .authorizeRequests(authorizeRequests ->
+                authorizeRequests
+                    .antMatchers(HttpMethod.GET, "/api/**").hasAuthority("SCOPE_poems/admin")
+                    .anyRequest().authenticated()
+            )
+            .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
     }
 
     public void authorizeByRole(HttpSecurity http) throws Exception {

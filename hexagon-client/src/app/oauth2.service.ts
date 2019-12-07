@@ -23,7 +23,7 @@ export class Oauth2Service {
     return this.http.get<any>(
       this.parameterService.logoutUrl + 
       '?client_id=' + this.parameterService.client_id + 
-      '&logout_uri=' + this.parameterService.logout_uri
+      '&logout_uri=' + this.parameterService.logout_callback
     );
   }
 

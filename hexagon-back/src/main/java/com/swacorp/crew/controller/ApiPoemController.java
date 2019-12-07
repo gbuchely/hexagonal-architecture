@@ -3,6 +3,7 @@ package com.swacorp.crew.controller;
 import com.swacorp.crew.adapter.driver.ApiRestDriver;
 import com.swacorp.crew.poem.command.AskForPoem;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -25,7 +26,8 @@ import java.util.List;
 @RequestMapping("/api")
 class ApiPoemController {
 
-	final String subsidiaryUri = "http://localhost:8081/api/";
+	@Value("${subUrl}")
+	private String subsidiaryUri;
 
 	private ApiRestDriver apiRestDriver;
 
@@ -36,8 +38,6 @@ class ApiPoemController {
 		
 	@GetMapping("/askForPoem")
 	public List askForPoem(@RequestParam(name = "lang", required = false, defaultValue = "en") String language, Model webModel) {
-		// Forward commands to the hexagon, by using SpringMvcDriver
-		//String val = springMvcDriver.reactTo(new AskForPoem(language), webModel);
 		return apiRestDriver.reactTo(new AskForPoem(language));
 	}
 
@@ -45,12 +45,14 @@ class ApiPoemController {
 	public List index(@AuthenticationPrincipal Jwt jwt) {
 		printClaims(jwt);
 		List<String> out = new ArrayList();
+		out.add("/api/");
 		out.add(String.format("Hello, %s!", jwt.getSubject()));
 		return out;
 	}
 
 	@GetMapping("/subsidiary")
 	public List subsidiary(@AuthenticationPrincipal Jwt jwt) {
+		System.out.println("subUrl : " + subsidiaryUri);
 		printClaims(jwt);
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -60,11 +62,12 @@ class ApiPoemController {
 		headers.setBearerAuth(jwt.getTokenValue());
 		HttpEntity<String> entity = new HttpEntity<>("parameters", headers);
 
-		ResponseEntity<String> result = restTemplate.exchange(subsidiaryUri, HttpMethod.GET, entity, String.class);
+		ResponseEntity<String> result = restTemplate.exchange(subsidiaryUri + "/api/", HttpMethod.GET, entity, String.class);
 
 		System.out.println(result.getBody());
 
 		List<String> out = new ArrayList();
+		out.add("/api/subsidiary/");
 		out.add("Get " + result.getBody() + " from Subsidiary");
 		return out;
 	}

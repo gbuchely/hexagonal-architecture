@@ -1,7 +1,7 @@
 package com.swacorp.crew.adapter.driver;
 
 import com.swacorp.crew.adapter.driven.ApiRestPublisher;
-import com.swacorp.crew.poem.boundary.driver_port.IReactToCommands;
+import com.swacorp.crew.poem.boundary.port.driver.IReactToCommands;
 
 import java.util.List;
 

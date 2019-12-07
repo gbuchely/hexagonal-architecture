@@ -15,10 +15,10 @@ export class PoemsService {
     private parameterService : ParameterService
   ) { }
 
-  private hexagonalUrl = 'http://localhost:8080/api/';  // URL to web api
-  private hexagonaSubsidiarylUrl = 'http://localhost:8081/api/';
-  private adminUrl = 'http://localhost:8080/admin/';
-  private adminSubsidiarylUrl = 'http://localhost:8081/admin/';
+  private hexagonalUrl = this.parameterService.mainRestAPIServerPath + '/api/';  // URL to web api
+  private hexagonaSubsidiarylUrl = this.parameterService.subsidiaryRestAPIServerPath + '/api/';
+  private adminUrl = this.parameterService.mainRestAPIServerPath + '/admin/';
+  private adminSubsidiarylUrl = this.parameterService.subsidiaryRestAPIServerPath + '/admin/';
 
   getPoems(lang : String): Observable<any> {
     //return of (POEMS)

@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
     this.oauth2Service
     .getToken(body)
     .subscribe(token => {
-      console.log(token.body.access_token);
+      console.log("ACCESS TOKEN :: \n" + token.body.access_token);
+      console.log("ID TOKEN :: \n" + token.body.id_token);
       this.parameterService.access_token = token.body.access_token;
       this.parameterService.expires_in = token.body.expires_in;
       this.parameterService.id_token = token.body.id_token;

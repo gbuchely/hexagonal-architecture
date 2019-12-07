@@ -11,12 +11,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 @EnableWebSecurity
 public class OAuth2ResourceServerSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    //@Value("${spring.security.oauth2.resourceserver.jwt.jwk-set-uri}")
-    //private String jwkSetUri;
-    private String jwkSetUri = "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_DdEk2qzAF/.well-known/jwks.json";
-
-    @Value("${subUrl}")
-    private String subUrl;
+    private String jwkSetUri = System.getenv("jwkSetUri");
 
     @Value("${sec}")
     private String sec;
@@ -27,7 +22,6 @@ public class OAuth2ResourceServerSecurityConfiguration extends WebSecurityConfig
     protected void configure(HttpSecurity http) throws Exception {
 
         System.out.println("sec : " + sec);
-        System.out.println("subUrl : " + subUrl);
         System.out.println("jwkSetUri : " + jwkSetUri);
 
         http.cors();
@@ -40,6 +34,6 @@ public class OAuth2ResourceServerSecurityConfiguration extends WebSecurityConfig
 
     @Bean
     JwtDecoder jwtDecoder() {
-        return NimbusJwtDecoder.withJwkSetUri(this.jwkSetUri).build();
+        return NimbusJwtDecoder.withJwkSetUri(jwkSetUri).build();
     }
 }

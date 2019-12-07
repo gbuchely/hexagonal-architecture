@@ -8,3 +8,8 @@ function getCode(input) {
 function parseJsonX(input) {
     return  JSON.stringify(input);
 }
+
+function concatArray(verses, input) {
+    var out = verses.concatArray(input);
+    return out;
+}

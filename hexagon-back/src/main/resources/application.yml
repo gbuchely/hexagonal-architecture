@@ -1,17 +1,18 @@
-subUrl: http://localhost:8081
+subUrl: http://localhost:8082
 sec: auth
 
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: admin
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: update
+  ## Enable to use PG DB
+  # datasource:
+  #  url: jdbc:postgresql://localhost:5432/postgres
+  #  username: postgres
+  #  password: admin
+  #jpa:
+  #  properties:
+  #    hibernate:
+  #      dialect: org.hibernate.dialect.PostgreSQLDialect
+  #  hibernate:
+  #    ddl-auto: update
   security:
     oauth2:
       resourceserver:
