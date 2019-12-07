@@ -10,7 +10,14 @@ $ ./gradlew clean build
   
 ## Running a MAIN instance:  
 - Use JDK 11  
-- Assuming localhost execution for all instances  
+- Assuming localhost execution for all instances
+
+Export JWK keys repository of the Auth Server as environment variable: 
+
+`
+export jwkSetUri=https://cognito-idp.us-east-1.amazonaws.com/us-east-1_DdEk2qzAF/.well-known/jwks.json  
+`
+This structure is valid for AWS Cognito, but every Auth server exposes a service "... /.well-known/jwks.json "  
   
 In root folder:  
 
