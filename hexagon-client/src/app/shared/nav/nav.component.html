@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Hexagonal</span>
+    <span class="example-spacer"></span>
+    <div *ngIf="isLoggedIn()">
+      <span>{{username()}} [ {{roles()}}]</span>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon" routerLink="/admin">lock</mat-icon>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example heart icon" routerLink="/user">person</mat-icon>
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon" (click)="logout()">exit_to_app</mat-icon>
+    </div>
+    <div *ngIf="!isLoggedIn()">
+      <mat-icon class="example-icon" aria-hidden="false" aria-label="Example delete icon" routerLink="/login">arrow_forward</mat-icon>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

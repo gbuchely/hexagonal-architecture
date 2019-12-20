@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ParameterService } from '../parameter.service';
-import { Router } from "@angular/router"
+import { ParameterService } from '../../../parameter.service';
+import { Router } from "@angular/router";
 
 declare function getCode(input: string): void;
 

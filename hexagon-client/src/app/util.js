@@ -5,8 +5,20 @@ function getCode(input) {
     return match[1];
 }
 
-function parseJsonX(input) {
+function stringifyJson(input) {
     return  JSON.stringify(input);
+}
+
+function parseJson(input) {
+  return  JSON.parse(input);
+}
+
+function getRoles(input) {
+  return  input["roles"]
+}
+
+function getUsername(input) {
+  return  input["cognito:username"]
 }
 
 function concatArray(verses, input) {

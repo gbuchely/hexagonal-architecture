@@ -1,0 +1,43 @@
+
+
+<mat-grid-list cols="2" rowHeight="2:2">
+  <mat-grid-tile>
+    <mat-card-header>
+      <mat-list>
+        <button mat-stroked-button color="secondary" (click)="clear()"> CLEAR </button>
+        <mat-divider></mat-divider>
+        <mat-divider></mat-divider>
+        <mat-list-item>Security [ Authority / api ]</mat-list-item>
+        <button mat-stroked-button color="secondary" (click)="identity()"> Get Identity of MAIN </button>
+        <mat-divider></mat-divider>
+        <button mat-stroked-button color="secondary" (click)="subsidiary()"> Get Identity of SUBSIDIARY through MAIN </button>
+        <mat-divider></mat-divider>
+        <button mat-stroked-button color="secondary" (click)="identitySubsidiary()"> Get Identity of SUBSIDIARY</button>
+        <mat-divider></mat-divider>
+        <button mat-stroked-button color="secondary" (click)="identityId()"> Get Identity of MAIN using ID TOKEN</button>
+        <mat-divider></mat-divider>
+        <mat-list-item>Security [ Authority / admin ]</mat-list-item>
+        <button mat-stroked-button color="secondary" (click)="admin()"> Get ADMIN Identity of MAIN</button>
+        <mat-divider></mat-divider>
+        <button mat-stroked-button color="secondary" (click)="adminId()"> Get ADMIN Identity of MAIN using ID TOKEN </button>
+        <mat-divider></mat-divider>
+        <mat-list-item>Security (Roles / api)</mat-list-item>
+        <button mat-stroked-button color="secondary" (click)="identitySubsidiaryId()"> Get Identity of SUBSIDIARY using ID TOKEN </button>
+        <mat-divider></mat-divider>
+        <mat-list-item>Security (Roles / admin)</mat-list-item>
+        <button mat-stroked-button color="secondary" (click)="adminSubsidiaryId()"> Get ADMIN Identity of SUBSIDIARY using ID TOKEN </button>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-header>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-content>
+        <p *ngFor="let line of out">
+          <span class="badge">{{line}}</span>
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
