@@ -1,0 +1,22 @@
+version: '3.7'
+volumes:
+  app:
+services:
+  dev2:
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile
+    volumes:
+      - app:/app
+    command: >
+      sh -c "
+      cd /usr/src &&
+      pwd &&
+      ls &&
+      node -v &&
+      npm -v &&
+      npm install &&
+      pwd &&
+      cd node_modules
+      "
+    image: "test1"

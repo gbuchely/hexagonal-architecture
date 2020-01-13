@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class ParameterService {
 
-  
+
   public authUrl = 'https://hexagonal.auth.us-east-1.amazoncognito.com/oauth2/authorize';
-  public client_id='639601tqi5eo74fenbcjmc8o2d'; 
+  public client_id='639601tqi5eo74fenbcjmc8o2d';
   public redirect_uri='http://localhost:4200/callback';
   public scope='openid poems/admin';
 

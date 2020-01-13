@@ -3,24 +3,28 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/c
 import { Observable } from 'rxjs';
 
 import {Oauth2Service} from './oauth2.service';
+import {ParameterService} from '../../parameter.service';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private authenticationService: Oauth2Service) {}
+  constructor(
+    private authenticationService: Oauth2Service,
+    private parameterService: ParameterService
+  ) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // add authorization header with jwt token if available
+    console.log('Intercepted:: ' + request)
 
-    /*
-    let currentUser = this.authenticationService.currentUserValue;
-    if (currentUser && currentUser.token) {
+    console.log(request.url.search('http://localhost:8080/api/*'))
+    if (request.url.search('http://localhost:8080/api/*') === 0 ) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${currentUser.token}`
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Authorization: 'Bearer ' + this.parameterService.access_token
         }
       });
     }
-    */
 
     return next.handle(request);
   }

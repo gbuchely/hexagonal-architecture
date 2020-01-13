@@ -28,7 +28,7 @@ export class PoemsComponent implements OnInit {
 
   getPoems(lang: string): void {
     console.log('Lang >> ' + lang)
-    this.poemsService.getPoems(lang)
+    this.poemsService.getPoemsJwt(lang)
       .subscribe(poemsRet => this.verses = poemsRet.body);
   }
 

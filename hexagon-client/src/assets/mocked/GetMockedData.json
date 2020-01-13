@@ -1,0 +1,6 @@
+{
+  "askForPoem" : {
+    "en" : ["Mocked verse,", "another mocked verse and ", "last mocked verse ..."],
+    "de" : ["Verspotteter Vers,", "ein weiterer verspotteter Vers und ", "letzter verspotteter Vers ..."]
+  }
+}
